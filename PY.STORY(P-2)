@@ -1,0 +1,20 @@
+with open("story.txt","r") as f:
+    story=f.read()
+Words=set()
+start_point=-1
+target_start="<"
+target_end=">"
+for i,char in enumerate(story):
+    if char == target_start:
+        start_point=i
+    if char == target_end and start_point != -1:
+        word=story[start_point : i+1]
+        Words.add(word)
+        start_point=-1
+Replace_word={}
+for word in Words:
+    Replace=input("enter the word for" + word +"=")
+    Replace_word[word]=Replace
+for word in Words:
+    story=story.replace(word,Replace_word[word])
+    print(story)
